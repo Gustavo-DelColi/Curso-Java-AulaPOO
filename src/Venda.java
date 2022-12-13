@@ -3,24 +3,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Venda {
-	
+
 	private Long id;
 
 	private String descricaoVenda;
-	
+
 	private String nomecliente;
-	
+
 	private String enderecoEntrega;
 
 	private BigDecimal valorTotal;
-	
+
 	private List<Produto> listaProdutos = new ArrayList<Produto>();
-	
-	
+
 	public List<Produto> getListaProdutos() {
 		return listaProdutos;
 	}
-	
+
+	private double totalVenda() {
+		double total = 0.0;
+		for (Produto produto : listaProdutos) {
+			total += produto.getValor().doubleValue();
+		}
+		this.valorTotal = BigDecimal.valueOf(total);
+		return total;
+	}
 
 	public Long getId() {
 		return id;
@@ -55,6 +62,7 @@ public class Venda {
 	}
 
 	public BigDecimal getValorTotal() {
+		this.valorTotal = BigDecimal.valueOf(totalVenda());
 		return valorTotal;
 	}
 
@@ -68,7 +76,5 @@ public class Venda {
 				+ ", enderecoEntrega=" + enderecoEntrega + ", valorTotal=" + valorTotal + ", listaProdutos="
 				+ listaProdutos + "]";
 	}
-	
-	
 
 }

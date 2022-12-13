@@ -1,11 +1,11 @@
 import java.math.BigDecimal;
 
 public class Produto {
-	
+
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private BigDecimal valor;
 
 	public Long getId() {
@@ -31,7 +31,10 @@ public class Produto {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", nome=" + nome + ", valor=" + valor + "]";
+	}
 
 }
